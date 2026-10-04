@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+header {
+    background-color: #263238;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+main {
+    width: 80%;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f1f3f4;
+    border-radius: 5px;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.summary p {
+    margin: 8px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
