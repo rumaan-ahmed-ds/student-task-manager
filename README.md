@@ -1,4 +1,4 @@
-## Student Task Management_Application
+## Student Task Management POrtal
 
 A simple task manager built using HTML, CSS, and JavaScript.
 
