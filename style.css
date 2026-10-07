@@ -1,53 +1,417 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f6f8;
-    color: #333;
+    background: linear-gradient(135deg, #eef2ff, #fdf2f8, #ecfeff);
+    background-attachment: fixed;
+    color: #263238;
+    line-height: 1.6;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 header {
-    background-color: #263238;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 50px 20px;
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    top: -100px;
+    left: -70px;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: -150px;
+    right: -80px;
 }
 
 header h1 {
     margin: 0 0 10px;
+    font-size: clamp(28px, 5vw, 42px);
+    position: relative;
+    z-index: 1;
 }
+
+header p {
+    margin: 0;
+    font-size: clamp(14px, 2vw, 18px);
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 main {
-    width: 80%;
-    max-width: 800px;
-    margin: 30px auto;
+    width: min(90%, 900px);
+    margin: 45px auto;
 }
 
+
+/* =========================
+   SECTION
+========================= */
+
 section {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: clamp(18px, 4vw, 30px);
+    margin-bottom: 28px;
+    border-radius: 18px;
+
+    border: 1px solid rgba(124, 58, 237, 0.12);
+
+    box-shadow:
+        0 10px 30px rgba(79, 70, 229, 0.1),
+        0 3px 10px rgba(219, 39, 119, 0.06);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
+section:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 15px 35px rgba(79, 70, 229, 0.15),
+        0 5px 15px rgba(219, 39, 119, 0.08);
+}
+
+section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #4f46e5;
+}
+
+
+/* =========================
+   TASK CARD
+========================= */
 
 .task {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #f1f3f4;
-    border-radius: 5px;
+    gap: 20px;
+
+    padding: 18px;
+    margin: 14px 0;
+
+    background: linear-gradient(135deg, #ffffff, #f8f7ff);
+
+    border: 1px solid #e0e7ff;
+    border-left: 5px solid #7c3aed;
+
+    border-radius: 14px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
+
+.task:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 10px 25px rgba(124, 58, 237, 0.15),
+        0 4px 10px rgba(219, 39, 119, 0.08);
+
+    border-color: #c4b5fd;
+}
+
+
+/* Task information */
+
+.task-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-info h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #312e81;
+}
+
+.task-info p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
 
 .status {
     font-weight: bold;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    color: #15803d;
+
+    border: 1px solid #86efac;
+    box-shadow: 0 3px 8px rgba(34, 197, 94, 0.15);
+}
+
+
+/* =========================
+   BUTTON GROUP
+========================= */
+
+.task-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+
+/* General button */
+
+.task-buttons button {
+    border: none;
+    padding: 9px 14px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Complete button */
+
+.btn-complete {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: white;
+
+    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.25);
+}
+
+.btn-complete:hover {
+    background: linear-gradient(135deg, #15803d, #16a34a);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(34, 197, 94, 0.3);
+}
+
+
+/* Edit button */
+
+.btn-edit {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    color: #1d4ed8;
+
+    box-shadow: 0 3px 8px rgba(59, 130, 246, 0.12);
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.2);
+}
+
+
+/* Delete button */
+
+.btn-delete {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #dc2626;
+
+    box-shadow: 0 3px 8px rgba(239, 68, 68, 0.12);
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #fecaca, #fca5a5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.2);
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .summary p {
-    margin: 8px 0;
+    margin: 0;
+    padding: 18px 15px;
+
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+
+    color: #4338ca;
+
+    border: 1px solid #ddd6fe;
+
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.summary p:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.15);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
-    padding: 20px;
-    color: #666;
+    padding: 30px 20px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+    main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .task {
+        flex-wrap: wrap;
+    }
+
+    .task-info {
+        width: 100%;
+    }
+
+    .task-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 35px 15px;
+    }
+
+    main {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .task {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .status {
+        font-size: 12px;
+    }
+
+    .task-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .task-buttons button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Complete button takes full width */
+    .btn-complete {
+        grid-column: 1 / -1;
+    }
+
+    .summary p {
+        padding: 12px;
+    }
+}
+
+
+/* =========================
+   VERY SMALL SCREENS
+========================= */
+
+@media (max-width: 320px) {
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    .task-info h3 {
+        font-size: 16px;
+    }
+
+    .task-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-complete {
+        grid-column: auto;
+    }
 }
